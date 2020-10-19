@@ -4,6 +4,7 @@ import 'express-async-errors'
 import path from 'path';
 import {Pergunta} from './models/Pergunta'
 
+// import models from './models';
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.get("/", (req, res) => {
     Pergunta.findAll({raw: true, order: [
         ['id', 'DESC']
     ]}).then((perguntas) => {
-        res.render("./views/index", {
+        res.render("index", {
             perguntas: perguntas
         });
     })

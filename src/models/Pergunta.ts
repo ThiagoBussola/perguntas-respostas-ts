@@ -31,8 +31,6 @@ Pergunta.init(
 )
 
 // force false = se a tabela ja existir ele não força a criação dela
-Pergunta.sync({force: true}).then(() => {
+Pergunta.sync({force: false}).then(() => {
     console.log("tabela criada")
 })
-
-module.exports = Pergunta
