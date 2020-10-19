@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import 'express-async-errors'
+import path from 'path';
 import {Pergunta} from './models/Pergunta'
 
 
@@ -9,8 +10,9 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "public")))
 
 app.get("/", (req, res) => {
     Pergunta.findAll({raw: true, order: [
